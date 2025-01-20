@@ -1,0 +1,30 @@
+ public class StringToInteger {
+        public static int convertStringToInt(String str) {
+            int result = 0;
+            for (int i = 0; i < str.length(); i++) {
+                // Get the character at the current position
+                char currentChar = str.charAt(i);
+                // Ensure the character is a digit
+                if (currentChar >= '0' && currentChar <= '9') {
+                    // Convert the character to its integer value
+                    int digitValue = currentChar - '0';
+                    // Update the result by shifting previous digits left and adding the new digit
+                    result = result * 10 + digitValue;
+                } else {
+                    // Handle non-numeric characters appropriately
+                    throw new IllegalArgumentException("Input string contains non-numeric characters.");
+                }
+            }
+            return result;
+        }
+
+        public static void main(String[] args) {
+            String numericString = "12345";
+            try {
+                int integerValue = convertStringToInt(numericString);
+                System.out.println("The integer value is: " + integerValue);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
